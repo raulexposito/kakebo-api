@@ -1,0 +1,5 @@
+flask==1.0.2
+pytest==4.2.0
+pytest-xdist== 1.26.1
+yapf==0.26.0
+pylint==2.2.2
