@@ -6,6 +6,7 @@ from modelo.concepto import Concepto
 from modelo.cantidad import Cantidad
 from modelo.fecha import Fecha
 from modelo.tipo import Tipo
+from modelo.entidad import Entidad
 
 
 def test_formatear_como_json():
@@ -18,7 +19,7 @@ def test_formatear_como_json():
         fecha=Fecha(pasado),
         cantidad=Cantidad(1234.56),
         tipo=Tipo('el tipo'),
-        entidad='la entidad')
+        entidad=Entidad('la entidad'))
 
     # cuando
     resultado = movimiento.como_json()

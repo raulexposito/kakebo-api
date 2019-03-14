@@ -3,6 +3,7 @@ from modelo.concepto import Concepto
 from modelo.fecha import Fecha
 from modelo.cantidad import Cantidad
 from modelo.tipo import Tipo
+from modelo.entidad import Entidad
 
 
 class Movimiento:
@@ -13,7 +14,7 @@ class Movimiento:
                  fecha=Fecha,
                  cantidad=Cantidad,
                  tipo=Tipo,
-                 entidad=''):
+                 entidad=Entidad):
         self._concepto = concepto
         self._fecha = fecha
         self._cantidad = cantidad
@@ -27,5 +28,5 @@ class Movimiento:
             'fecha': self._fecha.como_texto(),
             'cantidad': self._cantidad.como_texto(),
             'tipo': self._tipo.valor,
-            'entidad': self._entidad
+            'entidad': self._entidad.valor
         })
