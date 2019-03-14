@@ -2,6 +2,7 @@ import json
 from modelo.concepto import Concepto
 from modelo.fecha import Fecha
 from modelo.cantidad import Cantidad
+from modelo.tipo import Tipo
 
 
 class Movimiento:
@@ -11,7 +12,7 @@ class Movimiento:
                  concepto=Concepto,
                  fecha=Fecha,
                  cantidad=Cantidad,
-                 tipo='',
+                 tipo=Tipo,
                  entidad=''):
         self._concepto = concepto
         self._fecha = fecha
@@ -25,6 +26,6 @@ class Movimiento:
             'concepto': self._concepto.valor,
             'fecha': self._fecha.como_texto(),
             'cantidad': self._cantidad.como_texto(),
-            'tipo': self._tipo,
+            'tipo': self._tipo.valor,
             'entidad': self._entidad
         })
