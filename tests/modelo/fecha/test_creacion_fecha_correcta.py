@@ -2,6 +2,7 @@ import datetime
 
 from datetime import date
 from modelo.fecha import Fecha
+from babel.dates import format_date
 
 
 def test_fecha_por_defecto_es_hoy():
@@ -20,7 +21,7 @@ def test_fechas_pasadas_pueden_ser_creadas():
 
     # dado
     pasado = datetime.date(1999, 12, 31)
-    pasado_como_texto = "31-12-1999"
+    pasado_como_texto = "viernes, 31 de diciembre de 1999"
     fecha = Fecha(pasado)
 
     # cuando
@@ -31,5 +32,5 @@ def test_fechas_pasadas_pueden_ser_creadas():
 
 
 def hoy_como_texto():
-    """Convierte una fecha en texto con el formato dia-mes-año"""
-    return date.today().strftime('%d-%m-%Y')
+    """Convierte una fecha completa en texto"""
+    return format_date(date.today(), format='full', locale='es_ES')

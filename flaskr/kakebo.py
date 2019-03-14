@@ -4,11 +4,12 @@ from flask import Flask
 from modelo.movimiento import Movimiento
 from modelo.concepto import Concepto
 from modelo.fecha import Fecha
+from modelo.cantidad import Cantidad
 
-app = Flask(__name__)
+KAKEBO = Flask(__name__)
 
 
-@app.route('/')
+@KAKEBO.route('/')
 def index():
 
     miarray = []
@@ -19,7 +20,7 @@ def index():
                 Movimiento(
                     concepto=Concepto('el concepto'),
                     fecha=Fecha(),
-                    cantidad='1000',
+                    cantidad=Cantidad(123.45),
                     tipo='el tipo',
                     entidad='la entidad'))
 
@@ -27,4 +28,4 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    KAKEBO.run(host='0.0.0.0')

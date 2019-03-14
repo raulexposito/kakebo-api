@@ -1,4 +1,5 @@
 from datetime import date
+from babel.dates import format_date
 
 
 class Fecha:
@@ -15,5 +16,5 @@ class Fecha:
         self._valor = valor
 
     def como_texto(self):
-        """Devuelve una representación con el formato dia-mes-año"""
-        return self._valor.strftime('%d-%m-%Y')
+        """Devuelve una representación completa de la fecha"""
+        return format_date(self._valor, format='full', locale='es_ES')

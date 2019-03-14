@@ -1,6 +1,8 @@
 flask==1.0.2
-pytest==4.2.0
+pytest==4.3.1
 pytest-xdist== 1.26.1
 pytest-cov==2.6.1
 yapf==0.26.0
-pylint==2.2.2
+flake8==3.7.7
+babel==2.6.0
+unidecode==1.0.23

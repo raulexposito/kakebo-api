@@ -5,12 +5,22 @@
 sudo apt install python3-pip python3-venv httpie jq -y
 ```
 
+# Instalación de pyenv
+
+https://github.com/pyenv/pyenv
+https://github.com/pyenv/pyenv/wiki#suggested-build-environment
+
+```
+pyenv install 3.7.2
+```
+
 # Primera vez que usamos el repo
 
 ```
-python3 -m venv venv
+pyenv local 3.7.2
+python -m venv venv
 source venv/bin/activate
-pip3 install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 # Cómo ejecutar
@@ -30,6 +40,13 @@ http :5000 | jq
 source venv/bin/activate
 export PYTHONPATH=flaskr:tests
 watchexec --exts py ./save_actions.sh
+```
+
+## Cobertura
+
+```
+coverage report
+coverage html
 ```
 
 # Docker

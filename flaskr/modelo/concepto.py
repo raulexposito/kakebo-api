@@ -3,7 +3,7 @@ class Concepto:
 
     def __new__(cls, valor=''):
         if valor.strip() == '':
-            raise ValueError('El concepto no puede estar vacio')
+            raise ValueError('El concepto no puede estar vacío')
         instance = super(Concepto, cls).__new__(cls)
         instance.__init__(valor)
         return instance

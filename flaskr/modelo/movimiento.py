@@ -1,6 +1,7 @@
 import json
 from modelo.concepto import Concepto
 from modelo.fecha import Fecha
+from modelo.cantidad import Cantidad
 
 
 class Movimiento:
@@ -9,7 +10,7 @@ class Movimiento:
     def __init__(self,
                  concepto=Concepto,
                  fecha=Fecha,
-                 cantidad='',
+                 cantidad=Cantidad,
                  tipo='',
                  entidad=''):
         self._concepto = concepto
@@ -23,7 +24,7 @@ class Movimiento:
         return json.dumps({
             'concepto': self._concepto.valor,
             'fecha': self._fecha.como_texto(),
-            'cantidad': self._cantidad,
+            'cantidad': self._cantidad.como_texto(),
             'tipo': self._tipo,
             'entidad': self._entidad
         })

@@ -3,6 +3,7 @@ import datetime
 
 from modelo.movimiento import Movimiento
 from modelo.concepto import Concepto
+from modelo.cantidad import Cantidad
 from modelo.fecha import Fecha
 
 
@@ -14,7 +15,7 @@ def test_formatear_como_json():
     movimiento = Movimiento(
         concepto=Concepto('el concepto'),
         fecha=Fecha(pasado),
-        cantidad='1000',
+        cantidad=Cantidad(1234.56),
         tipo='el tipo',
         entidad='la entidad')
 
@@ -24,8 +25,8 @@ def test_formatear_como_json():
     # entonces
     assert resultado == generar_json({
         'concepto': 'el concepto',
-        'fecha': '31-12-1999',
-        'cantidad': '1000',
+        'fecha': 'viernes, 31 de diciembre de 1999',
+        'cantidad': '1.234,56 EUR',
         'tipo': 'el tipo',
         'entidad': 'la entidad'
     })

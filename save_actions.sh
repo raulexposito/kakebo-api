@@ -7,5 +7,5 @@ echo "======================================================="
 echo
 
 yapf -ir flaskr tests
-pylint flaskr/**/*.py --disable=missing-docstring
+flake8 flaskr tests
 py.test
