@@ -1,12 +1,13 @@
 # python:alpine is 3.{latest}
-FROM arm32v7/python:3.6.7-slim 
-
-RUN pip install flask
+FROM python:3.7.2-slim
 
 COPY flaskr /flaskr/
-COPY file.csv /
+COPY requirements.txt /
 
-EXPOSE 5000
+RUN pip install -r requirements.txt
 
+EXPOSE 5005
 
-ENTRYPOINT ["python", "/flaskr/kakebo.py"]
+WORKDIR "/flaskr/"
+
+ENTRYPOINT ["gunicorn", "-w", "4", "-b", ":5005", "kakebo:app"]

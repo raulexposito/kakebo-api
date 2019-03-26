@@ -1,31 +1,32 @@
 import csv
 
 from flask import Flask
+from flask_marshmallow import Marshmallow
 from modelo.movimiento import Movimiento
-from modelo.concepto import Concepto
-from modelo.fecha import Fecha
-from modelo.cantidad import Cantidad
 
-KAKEBO = Flask(__name__)
+app = Flask(__name__)
+ma = Marshmallow(app)
 
 
-@KAKEBO.route('/')
+@app.route('/')
 def index():
 
     miarray = []
-    with open('file.csv') as file:
+    with open('datos/movimientos.csv') as file:
         reader = csv.reader(file)
         for row in reader:
-            miarray.append(
-                Movimiento(
-                    concepto=Concepto('el concepto'),
-                    fecha=Fecha(),
-                    cantidad=Cantidad(123.45),
-                    tipo='el tipo',
-                    entidad='la entidad'))
+            miarray.append(Movimiento(row))
 
-    return miarray[0].como_json()
+    return movimientos_schema.jsonify(miarray)
 
 
 if __name__ == '__main__':
-    KAKEBO.run(host='0.0.0.0')
+    app.run()
+
+
+class MovimientoSchema(ma.Schema):
+    class Meta:
+        fields = ('concepto', 'fecha', 'cantidad', 'tipo', 'entidad')
+
+
+movimientos_schema = MovimientoSchema(many=True)
