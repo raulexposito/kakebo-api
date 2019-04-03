@@ -1,5 +1,6 @@
 import csv
 from modelo.movimiento import Movimiento
+from utilidades.formateador import Formateador
 
 
 class Movimientos:
@@ -13,34 +14,31 @@ class Movimientos:
 
     def _leer_movimientos(self, fichero):
         leidos = []
-        with open(fichero) as ficheroCSV:
-            lector = csv.reader(ficheroCSV)
+        saldo = 0
+        with open(fichero, 'r') as ficheroCSV:
+            lector = reversed(list(csv.reader(ficheroCSV)))
             for fila in lector:
-                leidos.append(Movimiento(fila))
+                movimiento = Movimiento(fila, saldo)
+                leidos.append(movimiento)
+                saldo += movimiento.cantidad
         return leidos
 
     def _calcular_gastos(self, leidos):
-        total = 0
-        for movimiento in leidos:
-            if (movimiento.es_gasto()):
-                total = total + movimiento._cantidad_bruto
-        return total
+        return sum([mov.cantidad for mov in leidos if mov.es_gasto()])
 
     def _calcular_ingresos(self, leidos):
-        total = 0
-        for movimiento in leidos:
-            if (movimiento.es_ingreso()):
-                total = total + movimiento._cantidad_bruto
-        return total
+        return sum([mov.cantidad for mov in leidos if mov.es_ingreso()])
 
     def como_dict(self):
+        return {
+            'gastos': Formateador.cantidad(self.gastos),
+            'ingresos': Formateador.cantidad(self.ingresos),
+            'diferencia': Formateador.cantidad(self.diferencia),
+            'leidos': self._leidos_como_dict()
+        }
+
+    def _leidos_como_dict(self):
         leidos = []
         for leido in self.leidos:
             leidos.append(leido.como_dict())
-
-        return {
-            'gastos': self.gastos,
-            'ingresos': self.ingresos,
-            'diferencia': self.diferencia,
-            'leidos': leidos
-        }
+        return leidos
