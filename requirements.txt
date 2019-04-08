@@ -7,3 +7,4 @@ flake8==3.7.7
 babel==2.6.0
 unidecode==1.0.23
 gunicorn==19.9.0
+python-dateutil==2.8.0

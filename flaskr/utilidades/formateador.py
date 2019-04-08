@@ -1,15 +1,15 @@
 import unidecode
 
-from datetime import datetime
 from babel.dates import format_date
 from babel.numbers import format_currency
+from utilidades.fecha import fecha
 
 
-class Formateador:
+class formateador:
     @staticmethod
     def fecha(fecha_bruto):
-        fecha = datetime.strptime(fecha_bruto, '%d-%m-%Y').date()
-        return format_date(fecha, format='full', locale='es_ES')
+        return format_date(
+            fecha.cadena_a_fecha(fecha_bruto), format='full', locale='es_ES')
 
     @staticmethod
     def cantidad(cantidad_bruto):

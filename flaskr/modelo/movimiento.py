@@ -1,7 +1,7 @@
-from utilidades.formateador import Formateador
+from utilidades.formateador import formateador
 
 
-class Movimiento:
+class movimiento:
     """Un movimiento del banco"""
 
     def __init__(self, linea, saldo):
@@ -23,7 +23,7 @@ class Movimiento:
             'concepto': self.concepto,
             'tipo': self.tipo,
             'entidad': self.entidad,
-            'fecha': Formateador.fecha(self.fecha),
-            'cantidad': Formateador.cantidad(self.cantidad),
-            'saldo': Formateador.cantidad(self.saldo)
+            'fecha': formateador.fecha(self.fecha),
+            'cantidad': formateador.cantidad(self.cantidad),
+            'saldo': formateador.cantidad(self.saldo)
         }
