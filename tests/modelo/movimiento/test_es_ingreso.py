@@ -1,14 +1,14 @@
-from modelo.movimiento import Movimiento
+from modelo.movimiento import movimiento
 
 
-def test_conversion_fecha():
+def test_es_ingreso():
     """Comprueba que la fecha se convierta a un formato largo"""
 
     # dado
-    movimiento = Movimiento(['', '28-09-2018', 0, '', ''])
+    mov = movimiento(['', '28-09-2018', 0, '', ''], 0)
 
     # cuando
-    resultado = movimiento.fecha
+    resultado = mov.fecha
 
     # entonces
     assert resultado == 'viernes, 28 de septiembre de 2018'

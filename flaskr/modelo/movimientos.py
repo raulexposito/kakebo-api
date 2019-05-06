@@ -15,18 +15,24 @@ class movimientos:
         self.quedan = self._calcular_quedan()
 
     def _calcular_gastos(self, leidos):
+        """devuelve la suma de todos los gastos"""
         return sum([mov.cantidad for mov in leidos if mov.es_gasto()])
 
     def _calcular_ingresos(self, leidos):
+        """devuelve la suma de todos los ingresos"""
         return sum([mov.cantidad for mov in leidos if mov.es_ingreso()])
 
     def _calcular_quedan(self):
-        return self.movimientos[-1].saldo + self.movimientos[-1].cantidad
+        """devuelve el saldo que queda tras el ultimo movimiento"""
+        return self.movimientos[-1].saldo
 
     def todos(self):
+        """devuelve un nuevo conjunto con todos los movimientos"""
         return movimientos(self.movimientos)
 
     def ultimos_meses(self, meses):
+        """devuelve un nuevo conjunto con los movimientos realizados en los
+        ultimos meses recibidos por parámetro"""
         return movimientos(
             list(
                 itertools.dropwhile(

@@ -10,7 +10,7 @@ class movimiento:
         self.cantidad = float(linea[2])
         self.tipo = linea[3].strip()
         self.entidad = linea[4].strip()
-        self.saldo = saldo
+        self.saldo = saldo + self.cantidad
 
     def es_gasto(self):
         return self.cantidad < 0
