@@ -1,36 +1,46 @@
-from flask import Flask, jsonify
-from flask_cors import CORS
+from flask import Flask, jsonify, render_template
+from flask_htmlmin import HTMLMIN
 from modelo.movimientos import movimientos
 from adaptadores.lectorCSV import lectorCSV
 
 app = Flask(__name__)
-app.config['JSON_AS_ASCII'] = False
-CORS(app)
+app.config['MINIFY_PAGE'] = True
+
+htmlmin = HTMLMIN(app)
+
+
+@app.route("/")
+def index():
+    return ultimos_tres_meses()
 
 
 @app.route('/todos', methods=['GET'])
 def todos():
-    return como_json(leer_movimientos().todos())
+    return render_template('kakebo.html', resultado=leer_movimientos().todos())
 
 
 @app.route('/ultimo_mes', methods=['GET'])
 def ultimo_mes():
-    return como_json(leer_movimientos().ultimos_meses(1))
+    return render_template(
+        'kakebo.html', resultado=leer_movimientos().ultimos_meses(1))
 
 
 @app.route('/ultimos_tres_meses', methods=['GET'])
 def ultimos_tres_meses():
-    return como_json(leer_movimientos().ultimos_meses(3))
+    return render_template(
+        'kakebo.html', resultado=leer_movimientos().ultimos_meses(3))
 
 
 @app.route('/ultimos_seis_meses', methods=['GET'])
 def ultimos_seis_meses():
-    return como_json(leer_movimientos().ultimos_meses(6))
+    return render_template(
+        'kakebo.html', resultado=leer_movimientos().ultimos_meses(6))
 
 
 @app.route('/ultimo_ano', methods=['GET'])
 def ultimo_ano():
-    return como_json(leer_movimientos().ultimos_meses(12))
+    return render_template(
+        'kakebo.html', resultado=leer_movimientos().ultimos_meses(12))
 
 
 def como_json(movimientos):

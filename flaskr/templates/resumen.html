@@ -1,0 +1,41 @@
+<div class="resumen">
+    <h5>Quedan: {{resultado.quedan}}</h5>
+    <h6>Diferencia: {{resultado.diferencia}}</h6>
+</div>
+
+
+<canvas id="grafica" height="200px"></canvas>
+
+<script type="text/javascript" src="{{ url_for('static', filename='js/Chart.min.js') }}"></script>
+
+<script>
+    var ctx = document.getElementById('grafica').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Ingresos', 'Gastos'],
+            datasets: [{
+                label: 'EUR',
+                data: [{{resultado.ingresos}}, {{resultado.gastos}}],
+                backgroundColor: [
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(255, 99, 132, 0.2)'                
+                ],
+                borderColor: [
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(255, 99, 132, 1)'                
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    });
+</script>

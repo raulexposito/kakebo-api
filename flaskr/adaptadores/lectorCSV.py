@@ -13,5 +13,5 @@ class lectorCSV:
             for fila in lector:
                 mov = movimiento(fila, saldo)
                 leidos.append(mov)
-                saldo += mov.cantidad
+                saldo += mov._cantidad
         return leidos

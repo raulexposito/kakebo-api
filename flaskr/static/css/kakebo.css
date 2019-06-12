@@ -1,0 +1,42 @@
+body {
+  overflow-y: scroll;
+}
+
+.cabecera {
+    display:flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+
+.concepto {
+    margin: 0;
+}
+
+.cantidad {
+    margin: 0;
+    color: #888;
+    font-size: 80%;
+}
+
+.boton-cambio-periodo {
+    width: 100%;
+    margin: 30px 0 10px;
+}
+
+.resumen {
+    margin-bottom: 50px;
+    color: white;
+    background-color: black;
+    padding: 5px 20px 10px;
+}
+
+.barra-lateral {
+    margin-top: 20px;
+}
+
+.icono {
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    display: block;
+}

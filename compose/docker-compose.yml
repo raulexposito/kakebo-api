@@ -1,0 +1,30 @@
+version: "3"
+services:
+
+  # ===========================================================================
+  # ~ NGINX
+  # ===========================================================================
+
+  kakebo-nginx:
+    build:
+      context: ./nginx
+    image: kakebo_nginx
+    container_name: kakebo-nginx
+    ports:
+      - 80:80
+    depends_on:
+      - kakebo-backend
+    links:
+      - kakebo-backend:kakebo-backend
+
+  # ===========================================================================
+  # ~ KAKEBO
+  # ===========================================================================
+
+  kakebo-backend:
+    image: kakebo_backend
+    container_name: kakebo-backend
+    volumes:
+      - /home/kakebo/movimientos/:/flaskr/datos/
+    ports:
+      - 5005:5005

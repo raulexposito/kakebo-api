@@ -1,11 +1,15 @@
 flask==1.0.2
-Flask-Cors==3.0.7
-pytest==4.3.1
-pytest-xdist== 1.26.1
-pytest-cov==2.6.1
+Flask-HTMLmin==1.5.0
+gunicorn==19.9.0
+
+# formateador del fuente
 yapf==0.26.0
+
+# analizador estático
 flake8==3.7.7
+
+# librerías
 babel==2.6.0
 unidecode==1.0.23
-gunicorn==19.9.0
 python-dateutil==2.8.0
+

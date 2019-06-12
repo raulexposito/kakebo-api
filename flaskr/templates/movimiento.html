@@ -1,0 +1,26 @@
+<li>
+  <div class="collapsible-header">
+    <img class="icono" src="/static/img/{{movimiento.tipo}}.png">
+    <div class="cabecera">
+      <p class="concepto">{{movimiento.concepto}}</p>
+      <p class="cantidad">{{movimiento.cantidad}}</p>
+    </div>
+  </div>
+  <div class="collapsible-body">
+    <div class="row">
+      <div class="col s12">
+        <div class="left-align">{{movimiento.fecha}}</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div class="left-align">{{movimiento.entidad}} ({{movimiento.tipo}})</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12">
+        <div>Quedan {{movimiento.saldo}} en la cuenta</div>
+      </div>
+    </div>
+  </div>
+</li>

@@ -1,0 +1,18 @@
+{% extends "plantilla.html" %}
+{% block main %}
+
+{% include "barra_lateral.html" %}
+
+{% with resultado=resultado %}
+    {% include "resumen.html" %}
+{% endwith %}
+
+<ul class="collapsible">
+    {% for movimiento in resultado.movimientos %}
+        {% with movimiento=movimiento %}
+            {% include "movimiento.html" %}
+        {% endwith %}
+    {% endfor %}
+</ul>
+{% endblock %}
+
