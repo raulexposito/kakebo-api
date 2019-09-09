@@ -50,6 +50,9 @@ flake8 flaskr
 
 ```
 docker build -t kakebo_backend .
+```
+
+```
 docker run --rm -p 5005:5005 \
 	-v /home/kakebo/movimientos/:/flaskr/datos/ \
 	--name kakebo-backend \
